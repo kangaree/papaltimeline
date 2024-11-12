@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Papal Timeline</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-top: 20px;
+      }
+      .timeline {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+      .entry {
+        display: flex;
+        justify-content: flex-start;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .entry .date {
+        width: 120px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: #333;
+        padding-right: 15px;
+      }
+      .entry .content {
+        padding: 10px 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-left: 30px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        width: 1000px;
+        overflow: visible; /* Allow the title to overflow */
+        justify-content: flex-start; /* Start the content at the top */
+        overflow-wrap: break-word; /* Allow word breaking */
+      }
+      .entry .content h2 {
+        margin-top: 0;
+        font-size: 16px;
+        color: #5a5a5a;
+        font-weight: bold;
+        white-space: normal; /* Allow text to wrap if needed */
+        word-wrap: break-word; /* Allow words to break across lines */
+      }
+      @media (max-width: 768px) {
+        .entry .date {
+          font-size: 12px;
+        }
+        .entry .content {
+          width: auto;
+        }
+        .entry .content h2 {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Papal Timeline</h1>
+
+    <div class="timeline" id="timeline">
+      <!-- Popes will be dynamically added here -->
+    </div>
+
+    <script>
+      // Define the list of popes as an array of objects
+      const popes = [
+        { name: "St. Peter", years: "32-67" },
+        { name: "St. Linus", years: "67-76" },
+        { name: "St. Anacletus (Cletus)", years: "76-88" },
+        { name: "St. Clement I", years: "88-97" },
+        { name: "St. Evaristus", years: "97-105" },
+        { name: "St. Alexander I", years: "105-115" },
+        { name: "St. Sixtus I", years: "115-125" },
+        { name: "St. Telesphorus", years: "125-136" },
+        { name: "St. Hyginus", years: "136-140" },
+        { name: "St. Pius I", years: "140-155" },
+        { name: "St. Anicetus", years: "155-166" },
+        { name: "St. Soter", years: "166-175" },
+        { name: "St. Eleutherius", years: "175-189" },
+        { name: "St. Victor I", years: "189-199" },
+        { name: "St. Zephyrinus", years: "199-217" },
+        { name: "St. Callistus I", years: "217-222" },
+        { name: "St. Urban I", years: "222-230" },
+        { name: "St. Pontian", years: "230-235" },
+        { name: "St. Anterus", years: "235-236" },
+        { name: "St. Fabian", years: "236-250" },
+        { name: "St. Cornelius", years: "251-253" },
+        { name: "St. Lucius I", years: "253-254" },
+        { name: "St. Stephen I", years: "254-257" },
+        { name: "St. Sixtus II", years: "257-258" },
+        { name: "St. Dionysius", years: "260-268" },
+        { name: "St. Felix I", years: "269-274" },
+        { name: "St. Eutychian", years: "275-283" },
+        { name: "St. Caius (Gaius)", years: "283-296" },
+        { name: "St. Marcellinus", years: "296-304" },
+        { name: "St. Marcellus I", years: "308-309" },
+        { name: "St. Eusebius", years: "309-310" },
+        { name: "St. Miltiades", years: "311-314" },
+        { name: "St. Sylvester I", years: "314-335" },
+        { name: "St. Marcus", years: "336" },
+        { name: "St. Julius I", years: "337-352" },
+        { name: "Liberius", years: "352-366" },
+        { name: "St. Damasus I", years: "366-384" },
+        { name: "St. Siricius", years: "384-399" },
+        { name: "St. Anastasius I", years: "399-401" },
+        { name: "St. Innocent I", years: "401-417" },
+        { name: "St. Zosimus", years: "417-418" },
+        { name: "St. Boniface I", years: "418-422" },
+        { name: "St. Celestine I", years: "422-432" },
+        { name: "St. Sixtus III", years: "432-440" },
+        { name: "St. Leo I (the Great)", years: "440-461" },
+        { name: "St. Hilarius", years: "461-468" },
+        { name: "St. Simplicius", years: "468-483" },
+        { name: "St. Felix III (II)", years: "483-492" },
+        { name: "St. Gelasius I", years: "492-496" },
+        { name: "Anastasius II", years: "496-498" },
+        { name: "St. Symmachus", years: "498-514" },
+        { name: "St. Hormisdas", years: "514-523" },
+        { name: "St. John I", years: "523-526" },
+        { name: "St. Felix IV (III)", years: "526-530" },
+        { name: "Boniface II", years: "530-532" },
+        { name: "John II", years: "533-535" },
+        { name: "St. Agapetus I", years: "535-536" },
+        { name: "St. Silverius", years: "536-537" },
+        { name: "Vigilius", years: "537-555" },
+        { name: "Pelagius I", years: "556-561" },
+        { name: "John III", years: "561-574" },
+        { name: "Benedict I", years: "575-579" },
+        { name: "Pelagius II", years: "579-590" },
+        { name: "St. Gregory I (the Great)", years: "590-604" },
+        { name: "Sabinian", years: "604-606" },
+        { name: "Boniface III", years: "607" },
+        { name: "St. Boniface IV", years: "608-615" },
+        { name: "St. Deusdedit (Adeodatus I)", years: "615-618" },
+        { name: "Boniface V", years: "619-625" },
+        { name: "Honorius I", years: "625-638" },
+        { name: "Severinus", years: "640" },
+        { name: "John IV", years: "640-642" },
+        { name: "Theodore I", years: "642-649" },
+        { name: "St. Martin I", years: "649-655" },
+        { name: "St. Eugene I", years: "655-657" },
+        { name: "St. Vitalian", years: "657-672" },
+        { name: "Adeodatus II", years: "672-676" },
+        { name: "Donus", years: "676-678" },
+        { name: "St. Agatho", years: "678-681" },
+        { name: "St. Leo II", years: "682-683" },
+        { name: "St. Benedict II", years: "684-685" },
+        { name: "John V", years: "685-686" },
+        { name: "Conon", years: "686-687" },
+        { name: "St. Sergius I", years: "687-701" },
+        { name: "John VI", years: "701-705" },
+        { name: "John VII", years: "705-707" },
+        { name: "Sisinnius", years: "708" },
+        { name: "Constantine", years: "708-715" },
+        { name: "St. Gregory II", years: "715-731" },
+        { name: "St. Gregory III", years: "731-741" },
+        { name: "St. Zachary", years: "741-752" },
+        { name: "Stephen II (III)", years: "752-757" },
+        { name: "St. Paul I", years: "757-767" },
+        { name: "Stephen III (IV)", years: "767-772" },
+        { name: "Adrian I", years: "772-795" },
+        { name: "St. Leo III", years: "795-816" },
+        { name: "Stephen IV (V)", years: "816-817" },
+        { name: "St. Paschal I", years: "817-824" },
+        { name: "Eugene II", years: "824-827" },
+        { name: "Valentine", years: "827" },
+        { name: "Gregory IV", years: "827-844" },
+        { name: "Sergius II", years: "844-847" },
+        { name: "St. Leo IV", years: "847-855" },
+        { name: "Benedict III", years: "855-858" },
+        { name: "St. Nicholas I (the Great)", years: "858-867" },
+        { name: "Adrian II", years: "867-872" },
+        { name: "John VIII", years: "872-882" },
+        { name: "Marinus I", years: "882-884" },
+        { name: "St. Adrian III", years: "884-885" },
+        { name: "Stephen V (VI)", years: "885-891" },
+        { name: "Formosus", years: "891-896" },
+        { name: "Boniface VI", years: "896" },
+        { name: "Stephen VI (VII)", years: "896-897" },
+        { name: "Romanus", years: "897" },
+        { name: "Theodore II", years: "897" },
+        { name: "John IX", years: "898-900" },
+        { name: "Benedict IV", years: "900-903" },
+        { name: "Leo V", years: "903" },
+        { name: "Sergius III", years: "904-911" },
+        { name: "Anastasius III", years: "911-913" },
+        { name: "Lando", years: "913-914" },
+        { name: "John X", years: "914-928" },
+        { name: "Leo VI", years: "928" },
+        { name: "Stephen VIII", years: "929-931" },
+        { name: "John XI", years: "931-935" },
+        { name: "Leo VII", years: "936-939" },
+        { name: "Stephen IX", years: "939-942" },
+        { name: "Marinus II", years: "942-946" },
+        { name: "Agapetus II", years: "946-955" },
+        { name: "John XII", years: "955-963" },
+        { name: "Leo VIII", years: "963-964" },
+        { name: "Benedict V", years: "964" },
+        { name: "John XIII", years: "965-972" },
+        { name: "Benedict VI", years: "973-974" },
+        { name: "Benedict VII", years: "974-983" },
+        { name: "John XIV", years: "983-984" },
+        { name: "John XV", years: "985-996" },
+        { name: "Gregory V", years: "996-999" },
+        { name: "Sylvester II", years: "999-1003" },
+        { name: "John XVII", years: "1003" },
+        { name: "John XVIII", years: "1003-1009" },
+        { name: "Sergius IV", years: "1009-1012" },
+        { name: "Benedict VIII", years: "1012-1024" },
+        { name: "John XIX", years: "1024-1032" },
+        { name: "Benedict IX", years: "1032-1045" },
+        { name: "Sylvester III", years: "1045" },
+        { name: "Benedict IX", years: "1045" },
+        { name: "Gregory VI", years: "1045-1046" },
+        { name: "Clement II", years: "1046-1047" },
+        { name: "Benedict IX", years: "1047-1048" },
+        { name: "Damasus II", years: "1048" },
+        { name: "St. Leo IX", years: "1049-1054" },
+        { name: "Victor II", years: "1055-1057" },
+        { name: "Stephen X", years: "1057-1058" },
+        { name: "Nicholas II", years: "1058-1061" },
+        { name: "Alexander II", years: "1061-1073" },
+        { name: "St. Gregory VII", years: "1073-1085" },
+        { name: "Blessed Victor III", years: "1086-1087" },
+        { name: "Blessed Urban II", years: "1088-1099" },
+        { name: "Paschal II", years: "1099-1118" },
+        { name: "Gelasius II", years: "1118-1119" },
+        { name: "Callistus II", years: "1119-1124" },
+        { name: "Honorius II", years: "1124-1130" },
+        { name: "Innocent II", years: "1130-1143" },
+        { name: "Celestine II", years: "1143-1144" },
+        { name: "Lucius II", years: "1144-1145" },
+        { name: "Blessed Eugene III", years: "1145-1153" },
+        { name: "Anastasius IV", years: "1153-1154" },
+        { name: "Adrian IV", years: "1154-1159" },
+        { name: "Alexander III", years: "1159-1181" },
+        { name: "Lucius III", years: "1181-1185" },
+        { name: "Urban III", years: "1185-1187" },
+        { name: "Gregory VIII", years: "1187" },
+        { name: "Clement III", years: "1187-1191" },
+        { name: "Celestine III", years: "1191-1198" },
+        { name: "Innocent III", years: "1198-1216" },
+        { name: "Honorius III", years: "1216-1227" },
+        { name: "Gregory IX", years: "1227-1241" },
+        { name: "Celestine IV", years: "1241" },
+        { name: "Innocent IV", years: "1243-1254" },
+        { name: "Alexander IV", years: "1254-1261" },
+        { name: "Urban IV", years: "1261-1264" },
+        { name: "Clement IV", years: "1265-1268" },
+        { name: "Blessed Gregory X", years: "1271-1276" },
+        { name: "Blessed Innocent V", years: "1276" },
+        { name: "Adrian V", years: "1276" },
+        { name: "John XXI", years: "1276-1277" },
+        { name: "Nicholas III", years: "1277-1280" },
+        { name: "Martin IV", years: "1281-1285" },
+        { name: "Honorius IV", years: "1285-1287" },
+        { name: "Nicholas IV", years: "1288-1292" },
+        { name: "St. Celestine V", years: "1294" },
+        { name: "Boniface VIII", years: "1294-1303" },
+        { name: "Blessed Benedict XI", years: "1303-1304" },
+        { name: "Clement V", years: "1305-1314" },
+        { name: "John XXII", years: "1316-1334" },
+        { name: "Benedict XII", years: "1334-1342" },
+        { name: "Clement VI", years: "1342-1352" },
+        { name: "Innocent VI", years: "1352-1362" },
+        { name: "Blessed Urban V", years: "1362-1370" },
+        { name: "Gregory XI", years: "1370-1378" },
+        { name: "Urban VI", years: "1378-1389" },
+        { name: "Boniface IX", years: "1389-1404" },
+        { name: "Innocent VII", years: "1404-1406" },
+        { name: "Gregory XII", years: "1406-1415" },
+        { name: "Martin V", years: "1417-1431" },
+        { name: "Eugene IV", years: "1431-1447" },
+        { name: "Nicholas V", years: "1447-1455" },
+        { name: "Callistus III", years: "1455-1458" },
+        { name: "Pius II", years: "1458-1464" },
+        { name: "Paul II", years: "1464-1471" },
+        { name: "Sixtus IV", years: "1471-1484" },
+        { name: "Innocent VIII", years: "1484-1492" },
+        { name: "Alexander VI", years: "1492-1503" },
+        { name: "Pius III", years: "1503" },
+        { name: "Julius II", years: "1503-1513" },
+        { name: "Leo X", years: "1513-1521" },
+        { name: "Adrian VI", years: "1522-1523" },
+        { name: "Clement VII", years: "1523-1534" },
+        { name: "Paul III", years: "1534-1549" },
+        { name: "Julius III", years: "1550-1555" },
+        { name: "Marcellus II", years: "1555" },
+        { name: "Paul IV", years: "1555-1559" },
+        { name: "Pius IV", years: "1559-1565" },
+        { name: "St. Pius V", years: "1566-1572" },
+        { name: "Gregory XIII", years: "1572-1585" },
+        { name: "Sixtus V", years: "1585-1590" },
+        { name: "Urban VII", years: "1590" },
+        { name: "Gregory XIV", years: "1590-1591" },
+        { name: "Innocent IX", years: "1591" },
+        { name: "Clement VIII", years: "1592-1605" },
+        { name: "Leo XI", years: "1605" },
+        { name: "Paul V", years: "1605-1621" },
+        { name: "Gregory XV", years: "1621-1623" },
+        { name: "Urban VIII", years: "1623-1644" },
+        { name: "Innocent X", years: "1644-1655" },
+        { name: "Alexander VII", years: "1655-1667" },
+        { name: "Clement IX", years: "1667-1669" },
+        { name: "Clement X", years: "1670-1676" },
+        { name: "Blessed Innocent XI", years: "1676-1689" },
+        { name: "Alexander VIII", years: "1689-1691" },
+        { name: "Innocent XII", years: "1691-1700" },
+        { name: "Clement XI", years: "1700-1721" },
+        { name: "Innocent XIII", years: "1721-1724" },
+        { name: "Benedict XIII", years: "1724-1730" },
+        { name: "Clement XII", years: "1730-1740" },
+        { name: "Benedict XIV", years: "1740-1758" },
+        { name: "Clement XIII", years: "1758-1769" },
+        { name: "Clement XIV", years: "1769-1774" },
+        { name: "Pius VI", years: "1775-1799" },
+        { name: "Pius VII", years: "1800-1823" },
+        { name: "Leo XII", years: "1823-1829" },
+        { name: "Pius VIII", years: "1829-1830" },
+        { name: "Gregory XVI", years: "1831-1846" },
+        { name: "Blessed Pius IX", years: "1846-1878" },
+        { name: "Leo XIII", years: "1878-1903" },
+        { name: "St. Pius X", years: "1903-1914" },
+        { name: "Benedict XV", years: "1914-1922" },
+        { name: "Pius XI", years: "1922-1939" },
+        { name: "Pius XII", years: "1939-1958" },
+        { name: "St. John XXIII", years: "1958-1963" },
+        { name: "St. Paul VI", years: "1963-1978" },
+        { name: "John Paul I", years: "1978" },
+        { name: "St. John Paul II", years: "1978-2005" },
+        { name: "Benedict XVI", years: "2005-2013" },
+        { name: "Francis", years: "2013—" },
+      ];
+
+      // Function to render popes
+      function renderPopes() {
+        const timelineContainer = document.getElementById("timeline");
+        const maxTenure = 70; // The maximum tenure (for scaling the height)
+
+        popes.forEach((pope, index) => {
+          // Parse the years and calculate the duration in years
+          const yearsArray = pope.years.split("-");
+          const startYear = parseInt(yearsArray[0]);
+          const endYear =
+            yearsArray[1] === "—"
+              ? new Date().getFullYear()
+              : parseInt(yearsArray[1]);
+          // If NaN, then set as 1 year (likely less than a year)
+          const tenure = endYear - startYear || 1;
+
+          // Create entry div
+          const entry = document.createElement("div");
+          entry.classList.add("entry");
+
+          // Date
+          const dateDiv = document.createElement("div");
+          dateDiv.classList.add("date");
+          dateDiv.textContent = pope.years;
+
+          // Content
+          const contentDiv = document.createElement("div");
+          contentDiv.classList.add("content");
+
+          const name = document.createElement("h2");
+          name.textContent = pope.name;
+          contentDiv.appendChild(name);
+
+          // Adjust the height of the content based on the pope's tenure
+          const relativeHeight = (tenure / maxTenure) * 1000;
+          contentDiv.style.height = `${relativeHeight}px`;
+
+          // Append date and content to entry
+          entry.appendChild(dateDiv);
+          entry.appendChild(contentDiv);
+
+          // Append entry to the timeline container
+          timelineContainer.appendChild(entry);
+        });
+      }
+
+      // Call the function to render popes
+      renderPopes();
+    </script>
+  </body>
+</html>
