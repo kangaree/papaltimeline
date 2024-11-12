@@ -68,9 +68,13 @@
         }
         .entry .content {
           width: auto;
+          max-width: 40vw;
         }
         .entry .content h2 {
           font-size: 14px;
+        }
+        .entry .content p {
+          font-size: 10px;
         }
       }
     </style>
@@ -85,272 +89,1607 @@
     <script>
       // Define the list of popes as an array of objects
       const popes = [
-        { name: "St. Peter", years: "32-67" },
-        { name: "St. Linus", years: "67-76" },
-        { name: "St. Anacletus (Cletus)", years: "76-88" },
-        { name: "St. Clement I", years: "88-97" },
-        { name: "St. Evaristus", years: "97-105" },
-        { name: "St. Alexander I", years: "105-115" },
-        { name: "St. Sixtus I", years: "115-125" },
-        { name: "St. Telesphorus", years: "125-136" },
-        { name: "St. Hyginus", years: "136-140" },
-        { name: "St. Pius I", years: "140-155" },
-        { name: "St. Anicetus", years: "155-166" },
-        { name: "St. Soter", years: "166-175" },
-        { name: "St. Eleutherius", years: "175-189" },
-        { name: "St. Victor I", years: "189-199" },
-        { name: "St. Zephyrinus", years: "199-217" },
-        { name: "St. Callistus I", years: "217-222" },
-        { name: "St. Urban I", years: "222-230" },
-        { name: "St. Pontian", years: "230-235" },
-        { name: "St. Anterus", years: "235-236" },
-        { name: "St. Fabian", years: "236-250" },
-        { name: "St. Cornelius", years: "251-253" },
-        { name: "St. Lucius I", years: "253-254" },
-        { name: "St. Stephen I", years: "254-257" },
-        { name: "St. Sixtus II", years: "257-258" },
-        { name: "St. Dionysius", years: "260-268" },
-        { name: "St. Felix I", years: "269-274" },
-        { name: "St. Eutychian", years: "275-283" },
-        { name: "St. Caius (Gaius)", years: "283-296" },
-        { name: "St. Marcellinus", years: "296-304" },
-        { name: "St. Marcellus I", years: "308-309" },
-        { name: "St. Eusebius", years: "309-310" },
-        { name: "St. Miltiades", years: "311-314" },
-        { name: "St. Sylvester I", years: "314-335" },
-        { name: "St. Marcus", years: "336" },
-        { name: "St. Julius I", years: "337-352" },
-        { name: "Liberius", years: "352-366" },
-        { name: "St. Damasus I", years: "366-384" },
-        { name: "St. Siricius", years: "384-399" },
-        { name: "St. Anastasius I", years: "399-401" },
-        { name: "St. Innocent I", years: "401-417" },
-        { name: "St. Zosimus", years: "417-418" },
-        { name: "St. Boniface I", years: "418-422" },
-        { name: "St. Celestine I", years: "422-432" },
-        { name: "St. Sixtus III", years: "432-440" },
-        { name: "St. Leo I (the Great)", years: "440-461" },
-        { name: "St. Hilarius", years: "461-468" },
-        { name: "St. Simplicius", years: "468-483" },
-        { name: "St. Felix III (II)", years: "483-492" },
-        { name: "St. Gelasius I", years: "492-496" },
-        { name: "Anastasius II", years: "496-498" },
-        { name: "St. Symmachus", years: "498-514" },
-        { name: "St. Hormisdas", years: "514-523" },
-        { name: "St. John I", years: "523-526" },
-        { name: "St. Felix IV (III)", years: "526-530" },
-        { name: "Boniface II", years: "530-532" },
-        { name: "John II", years: "533-535" },
-        { name: "St. Agapetus I", years: "535-536" },
-        { name: "St. Silverius", years: "536-537" },
-        { name: "Vigilius", years: "537-555" },
-        { name: "Pelagius I", years: "556-561" },
-        { name: "John III", years: "561-574" },
-        { name: "Benedict I", years: "575-579" },
-        { name: "Pelagius II", years: "579-590" },
-        { name: "St. Gregory I (the Great)", years: "590-604" },
-        { name: "Sabinian", years: "604-606" },
-        { name: "Boniface III", years: "607" },
-        { name: "St. Boniface IV", years: "608-615" },
-        { name: "St. Deusdedit (Adeodatus I)", years: "615-618" },
-        { name: "Boniface V", years: "619-625" },
-        { name: "Honorius I", years: "625-638" },
-        { name: "Severinus", years: "640" },
-        { name: "John IV", years: "640-642" },
-        { name: "Theodore I", years: "642-649" },
-        { name: "St. Martin I", years: "649-655" },
-        { name: "St. Eugene I", years: "655-657" },
-        { name: "St. Vitalian", years: "657-672" },
-        { name: "Adeodatus II", years: "672-676" },
-        { name: "Donus", years: "676-678" },
-        { name: "St. Agatho", years: "678-681" },
-        { name: "St. Leo II", years: "682-683" },
-        { name: "St. Benedict II", years: "684-685" },
-        { name: "John V", years: "685-686" },
-        { name: "Conon", years: "686-687" },
-        { name: "St. Sergius I", years: "687-701" },
-        { name: "John VI", years: "701-705" },
-        { name: "John VII", years: "705-707" },
-        { name: "Sisinnius", years: "708" },
-        { name: "Constantine", years: "708-715" },
-        { name: "St. Gregory II", years: "715-731" },
-        { name: "St. Gregory III", years: "731-741" },
-        { name: "St. Zachary", years: "741-752" },
-        { name: "Stephen II (III)", years: "752-757" },
-        { name: "St. Paul I", years: "757-767" },
-        { name: "Stephen III (IV)", years: "767-772" },
-        { name: "Adrian I", years: "772-795" },
-        { name: "St. Leo III", years: "795-816" },
-        { name: "Stephen IV (V)", years: "816-817" },
-        { name: "St. Paschal I", years: "817-824" },
-        { name: "Eugene II", years: "824-827" },
-        { name: "Valentine", years: "827" },
-        { name: "Gregory IV", years: "827-844" },
-        { name: "Sergius II", years: "844-847" },
-        { name: "St. Leo IV", years: "847-855" },
-        { name: "Benedict III", years: "855-858" },
-        { name: "St. Nicholas I (the Great)", years: "858-867" },
-        { name: "Adrian II", years: "867-872" },
-        { name: "John VIII", years: "872-882" },
-        { name: "Marinus I", years: "882-884" },
-        { name: "St. Adrian III", years: "884-885" },
-        { name: "Stephen V (VI)", years: "885-891" },
-        { name: "Formosus", years: "891-896" },
-        { name: "Boniface VI", years: "896" },
-        { name: "Stephen VI (VII)", years: "896-897" },
-        { name: "Romanus", years: "897" },
-        { name: "Theodore II", years: "897" },
-        { name: "John IX", years: "898-900" },
-        { name: "Benedict IV", years: "900-903" },
-        { name: "Leo V", years: "903" },
-        { name: "Sergius III", years: "904-911" },
-        { name: "Anastasius III", years: "911-913" },
-        { name: "Lando", years: "913-914" },
-        { name: "John X", years: "914-928" },
-        { name: "Leo VI", years: "928" },
-        { name: "Stephen VIII", years: "929-931" },
-        { name: "John XI", years: "931-935" },
-        { name: "Leo VII", years: "936-939" },
-        { name: "Stephen IX", years: "939-942" },
-        { name: "Marinus II", years: "942-946" },
-        { name: "Agapetus II", years: "946-955" },
-        { name: "John XII", years: "955-963" },
-        { name: "Leo VIII", years: "963-964" },
-        { name: "Benedict V", years: "964" },
-        { name: "John XIII", years: "965-972" },
-        { name: "Benedict VI", years: "973-974" },
-        { name: "Benedict VII", years: "974-983" },
-        { name: "John XIV", years: "983-984" },
-        { name: "John XV", years: "985-996" },
-        { name: "Gregory V", years: "996-999" },
-        { name: "Sylvester II", years: "999-1003" },
-        { name: "John XVII", years: "1003" },
-        { name: "John XVIII", years: "1003-1009" },
-        { name: "Sergius IV", years: "1009-1012" },
-        { name: "Benedict VIII", years: "1012-1024" },
-        { name: "John XIX", years: "1024-1032" },
-        { name: "Benedict IX", years: "1032-1045" },
-        { name: "Sylvester III", years: "1045" },
-        { name: "Benedict IX", years: "1045" },
-        { name: "Gregory VI", years: "1045-1046" },
-        { name: "Clement II", years: "1046-1047" },
-        { name: "Benedict IX", years: "1047-1048" },
-        { name: "Damasus II", years: "1048" },
-        { name: "St. Leo IX", years: "1049-1054" },
-        { name: "Victor II", years: "1055-1057" },
-        { name: "Stephen X", years: "1057-1058" },
-        { name: "Nicholas II", years: "1058-1061" },
-        { name: "Alexander II", years: "1061-1073" },
-        { name: "St. Gregory VII", years: "1073-1085" },
-        { name: "Blessed Victor III", years: "1086-1087" },
-        { name: "Blessed Urban II", years: "1088-1099" },
-        { name: "Paschal II", years: "1099-1118" },
-        { name: "Gelasius II", years: "1118-1119" },
-        { name: "Callistus II", years: "1119-1124" },
-        { name: "Honorius II", years: "1124-1130" },
-        { name: "Innocent II", years: "1130-1143" },
-        { name: "Celestine II", years: "1143-1144" },
-        { name: "Lucius II", years: "1144-1145" },
-        { name: "Blessed Eugene III", years: "1145-1153" },
-        { name: "Anastasius IV", years: "1153-1154" },
-        { name: "Adrian IV", years: "1154-1159" },
-        { name: "Alexander III", years: "1159-1181" },
-        { name: "Lucius III", years: "1181-1185" },
-        { name: "Urban III", years: "1185-1187" },
-        { name: "Gregory VIII", years: "1187" },
-        { name: "Clement III", years: "1187-1191" },
-        { name: "Celestine III", years: "1191-1198" },
-        { name: "Innocent III", years: "1198-1216" },
-        { name: "Honorius III", years: "1216-1227" },
-        { name: "Gregory IX", years: "1227-1241" },
-        { name: "Celestine IV", years: "1241" },
-        { name: "Innocent IV", years: "1243-1254" },
-        { name: "Alexander IV", years: "1254-1261" },
-        { name: "Urban IV", years: "1261-1264" },
-        { name: "Clement IV", years: "1265-1268" },
-        { name: "Blessed Gregory X", years: "1271-1276" },
-        { name: "Blessed Innocent V", years: "1276" },
-        { name: "Adrian V", years: "1276" },
-        { name: "John XXI", years: "1276-1277" },
-        { name: "Nicholas III", years: "1277-1280" },
-        { name: "Martin IV", years: "1281-1285" },
-        { name: "Honorius IV", years: "1285-1287" },
-        { name: "Nicholas IV", years: "1288-1292" },
-        { name: "St. Celestine V", years: "1294" },
-        { name: "Boniface VIII", years: "1294-1303" },
-        { name: "Blessed Benedict XI", years: "1303-1304" },
-        { name: "Clement V", years: "1305-1314" },
-        { name: "John XXII", years: "1316-1334" },
-        { name: "Benedict XII", years: "1334-1342" },
-        { name: "Clement VI", years: "1342-1352" },
-        { name: "Innocent VI", years: "1352-1362" },
-        { name: "Blessed Urban V", years: "1362-1370" },
-        { name: "Gregory XI", years: "1370-1378" },
-        { name: "Urban VI", years: "1378-1389" },
-        { name: "Boniface IX", years: "1389-1404" },
-        { name: "Innocent VII", years: "1404-1406" },
-        { name: "Gregory XII", years: "1406-1415" },
-        { name: "Martin V", years: "1417-1431" },
-        { name: "Eugene IV", years: "1431-1447" },
-        { name: "Nicholas V", years: "1447-1455" },
-        { name: "Callistus III", years: "1455-1458" },
-        { name: "Pius II", years: "1458-1464" },
-        { name: "Paul II", years: "1464-1471" },
-        { name: "Sixtus IV", years: "1471-1484" },
-        { name: "Innocent VIII", years: "1484-1492" },
-        { name: "Alexander VI", years: "1492-1503" },
-        { name: "Pius III", years: "1503" },
-        { name: "Julius II", years: "1503-1513" },
-        { name: "Leo X", years: "1513-1521" },
-        { name: "Adrian VI", years: "1522-1523" },
-        { name: "Clement VII", years: "1523-1534" },
-        { name: "Paul III", years: "1534-1549" },
-        { name: "Julius III", years: "1550-1555" },
-        { name: "Marcellus II", years: "1555" },
-        { name: "Paul IV", years: "1555-1559" },
-        { name: "Pius IV", years: "1559-1565" },
-        { name: "St. Pius V", years: "1566-1572" },
-        { name: "Gregory XIII", years: "1572-1585" },
-        { name: "Sixtus V", years: "1585-1590" },
-        { name: "Urban VII", years: "1590" },
-        { name: "Gregory XIV", years: "1590-1591" },
-        { name: "Innocent IX", years: "1591" },
-        { name: "Clement VIII", years: "1592-1605" },
-        { name: "Leo XI", years: "1605" },
-        { name: "Paul V", years: "1605-1621" },
-        { name: "Gregory XV", years: "1621-1623" },
-        { name: "Urban VIII", years: "1623-1644" },
-        { name: "Innocent X", years: "1644-1655" },
-        { name: "Alexander VII", years: "1655-1667" },
-        { name: "Clement IX", years: "1667-1669" },
-        { name: "Clement X", years: "1670-1676" },
-        { name: "Blessed Innocent XI", years: "1676-1689" },
-        { name: "Alexander VIII", years: "1689-1691" },
-        { name: "Innocent XII", years: "1691-1700" },
-        { name: "Clement XI", years: "1700-1721" },
-        { name: "Innocent XIII", years: "1721-1724" },
-        { name: "Benedict XIII", years: "1724-1730" },
-        { name: "Clement XII", years: "1730-1740" },
-        { name: "Benedict XIV", years: "1740-1758" },
-        { name: "Clement XIII", years: "1758-1769" },
-        { name: "Clement XIV", years: "1769-1774" },
-        { name: "Pius VI", years: "1775-1799" },
-        { name: "Pius VII", years: "1800-1823" },
-        { name: "Leo XII", years: "1823-1829" },
-        { name: "Pius VIII", years: "1829-1830" },
-        { name: "Gregory XVI", years: "1831-1846" },
-        { name: "Blessed Pius IX", years: "1846-1878" },
-        { name: "Leo XIII", years: "1878-1903" },
-        { name: "St. Pius X", years: "1903-1914" },
-        { name: "Benedict XV", years: "1914-1922" },
-        { name: "Pius XI", years: "1922-1939" },
-        { name: "Pius XII", years: "1939-1958" },
-        { name: "St. John XXIII", years: "1958-1963" },
-        { name: "St. Paul VI", years: "1963-1978" },
-        { name: "John Paul I", years: "1978" },
-        { name: "St. John Paul II", years: "1978-2005" },
-        { name: "Benedict XVI", years: "2005-2013" },
-        { name: "Francis", years: "2013—" },
+        {
+          name: "St. Peter",
+          years: "32-67",
+          notes:
+            "The first pope, considered the rock on which Christ founded his Church. Traditionally martyred in Rome.",
+        },
+        {
+          name: "St. Linus",
+          years: "67-76",
+          notes:
+            "The second pope, who succeeded St. Peter. His papacy is associated with the early organization of the Church.",
+        },
+        {
+          name: "St. Anacletus (Cletus)",
+          years: "76-88",
+          notes:
+            "The third pope, believed to have been a Greek by birth, continued the work of organizing the early Christian communities.",
+        },
+        {
+          name: "St. Clement I",
+          years: "88-97",
+          notes:
+            "Wrote the famous letter to the Corinthians, which is one of the earliest Christian writings after the New Testament.",
+        },
+        {
+          name: "St. Evaristus",
+          years: "97-105",
+          notes:
+            "Known for establishing the system of Christian hierarchical clergy, including the role of deacons.",
+        },
+        {
+          name: "St. Alexander I",
+          years: "105-115",
+          notes:
+            "His papacy is noted for organizing the liturgical structure and for his martyrdom.",
+        },
+        {
+          name: "St. Sixtus I",
+          years: "115-125",
+          notes:
+            "Strengthened the structure of the early Church, instituting new liturgical practices and enforcing discipline.",
+        },
+        {
+          name: "St. Telesphorus",
+          years: "125-136",
+          notes:
+            "Traditionally believed to have been martyred. He established some liturgical practices such as fasting during Lent.",
+        },
+        {
+          name: "St. Hyginus",
+          years: "136-140",
+          notes:
+            "Focused on theological discussions and is believed to have codified Christian practices in Rome.",
+        },
+        {
+          name: "St. Pius I",
+          years: "140-155",
+          notes:
+            "A pope known for his efforts in maintaining orthodoxy during the early heretical movements in Christianity.",
+        },
+        {
+          name: "St. Anicetus",
+          years: "155-166",
+          notes:
+            "Faced challenges with Gnosticism and differing theological views, but emphasized the unity of the Church.",
+        },
+        {
+          name: "St. Soter",
+          years: "166-175",
+          notes:
+            "Known for his charitable works, particularly the distribution of alms to the poor.",
+        },
+        {
+          name: "St. Eleutherius",
+          years: "175-189",
+          notes:
+            "His papacy coincided with the spread of Christianity beyond Rome, particularly to Britain.",
+        },
+        {
+          name: "St. Victor I",
+          years: "189-199",
+          notes:
+            "First African pope; known for settling disputes about the date of Easter.",
+        },
+        {
+          name: "St. Zephyrinus",
+          years: "199-217",
+          notes:
+            "Faced significant theological challenges, including Gnosticism and Monarchianism.",
+        },
+        {
+          name: "St. Callistus I",
+          years: "217-222",
+          notes:
+            "Promoted Christian unity, and was martyred under Emperor Alexander Severus.",
+        },
+        {
+          name: "St. Urban I",
+          years: "222-230",
+          notes:
+            "Known for being an advocate of the poor and presiding over an era of Christian persecution.",
+        },
+        {
+          name: "St. Pontian",
+          years: "230-235",
+          notes:
+            "He was exiled to Sardinia where he died as a martyr, the first pope to voluntarily abdicate.",
+        },
+        {
+          name: "St. Anterus",
+          years: "235-236",
+          notes:
+            "Served a short papacy during a time of severe persecution of Christians.",
+        },
+        {
+          name: "St. Fabian",
+          years: "236-250",
+          notes:
+            "A well-respected pope who organized the Christian communities during times of persecution.",
+        },
+        {
+          name: "St. Cornelius",
+          years: "251-253",
+          notes:
+            "His papacy was marked by a major schism over the issue of lapsed Christians.",
+        },
+        {
+          name: "St. Lucius I",
+          years: "253-254",
+          notes:
+            "His papacy was short and marked by further conflicts regarding lapsed Christians and their re-admittance.",
+        },
+        {
+          name: "St. Stephen I",
+          years: "254-257",
+          notes:
+            "Known for his firm stance on the validity of baptism given by heretics.",
+        },
+        {
+          name: "St. Sixtus II",
+          years: "257-258",
+          notes:
+            "Martyred during the persecution of Christians under Emperor Valerian.",
+        },
+        {
+          name: "St. Dionysius",
+          years: "260-268",
+          notes:
+            "Worked to resolve internal disputes and brought stability to the Church during a time of persecution.",
+        },
+        {
+          name: "St. Felix I",
+          years: "269-274",
+          notes:
+            "Known for his efforts to protect the Church and for being a martyr during the persecution under Emperor Aurelian.",
+        },
+        {
+          name: "St. Eutychian",
+          years: "275-283",
+          notes:
+            "Had to deal with the Church's organization and structure, emphasizing the importance of martyrs.",
+        },
+        {
+          name: "St. Caius (Gaius)",
+          years: "283-296",
+          notes:
+            "His papacy is thought to have been marked by the growth of Christianity in Rome despite ongoing persecution.",
+        },
+        {
+          name: "St. Marcellinus",
+          years: "296-304",
+          notes:
+            "Faced the challenge of the Diocletian persecutions; was reportedly forced to sacrifice to idols.",
+        },
+        {
+          name: "St. Marcellus I",
+          years: "308-309",
+          notes:
+            "A pope who had to address issues regarding the reintegration of lapsed Christians.",
+        },
+        {
+          name: "St. Eusebius",
+          years: "309-310",
+          notes:
+            "Pope during a time of relative peace for Christians but had to navigate theological disputes.",
+        },
+        {
+          name: "St. Miltiades",
+          years: "311-314",
+          notes:
+            "First pope after the Edict of Milan, which legalized Christianity in the Roman Empire.",
+        },
+        {
+          name: "St. Sylvester I",
+          years: "314-335",
+          notes:
+            "Pope during Constantine's reign and the Council of Nicaea, which defined key Christian doctrines.",
+        },
+        {
+          name: "St. Marcus",
+          years: "336",
+          notes:
+            "Had a very short papacy, marked by his efforts to address controversies in the Church.",
+        },
+        {
+          name: "St. Julius I",
+          years: "337-352",
+          notes: "Known for his defense of Nicene orthodoxy against Arianism.",
+        },
+        {
+          name: "Liberius",
+          years: "352-366",
+          notes:
+            "Faced difficulties in defending the Nicene Creed during the Arian controversy.",
+        },
+        {
+          name: "St. Damasus I",
+          years: "366-384",
+          notes:
+            "Pope who promoted the authority of the pope in the Church and worked to preserve orthodoxy.",
+        },
+        {
+          name: "St. Siricius",
+          years: "384-399",
+          notes:
+            "First pope to issue decretals (official papal letters) regarding Church discipline.",
+        },
+        {
+          name: "St. Anastasius I",
+          years: "399-401",
+          notes:
+            "Pope during a period of continued theological and political challenges.",
+        },
+        {
+          name: "St. Innocent I",
+          years: "401-417",
+          notes:
+            "His papacy marked the growing influence of the papacy in European politics.",
+        },
+        {
+          name: "St. Zosimus",
+          years: "417-418",
+          notes:
+            "He dealt with the Pelagian controversy, promoting the doctrine of original sin.",
+        },
+        {
+          name: "St. Boniface I",
+          years: "418-422",
+          notes:
+            "Pope who helped establish a clearer role for the pope as the chief authority in the Church.",
+        },
+        {
+          name: "St. Celestine I",
+          years: "422-432",
+          notes:
+            "Known for his firm stance against Pelagianism and his support of missionary activity.",
+        },
+        {
+          name: "St. Sixtus III",
+          years: "432-440",
+          notes:
+            "Pope during the height of the Roman Empire’s Christianization, defending the faith against heresy.",
+        },
+        {
+          name: "St. Leo I (the Great)",
+          years: "440-461",
+          notes:
+            "One of the most influential popes in history, who defined the nature of the papacy and fought against heresies.",
+        },
+        {
+          name: "St. Hilarius",
+          years: "461-468",
+          notes:
+            "His papacy focused on defending the Church against heresies, particularly the Eutychian heresy.",
+        },
+        {
+          name: "St. Simplicius",
+          years: "468-483",
+          notes:
+            "Worked to maintain Church unity amid growing theological debates.",
+        },
+        {
+          name: "St. Felix III (II)",
+          years: "483-492",
+          notes:
+            "Promoted the authority of the pope and worked against schisms in the Church.",
+        },
+        {
+          name: "St. Gelasius I",
+          years: "492-496",
+          notes:
+            "Famous for his doctrinal writings on the role of the pope and the separation of Church and state.",
+        },
+        {
+          name: "Anastasius II",
+          years: "496-498",
+          notes:
+            "His papacy was marked by efforts to heal the East-West Schism, but he was seen as compromising with heretical views.",
+        },
+        {
+          name: "St. Symmachus",
+          years: "498-514",
+          notes:
+            "Pope during a period of intense political and theological struggle in the Church.",
+        },
+        {
+          name: "St. Hormisdas",
+          years: "514-523",
+          notes:
+            "He succeeded in restoring unity with the Eastern Church after years of theological division.",
+        },
+        {
+          name: "St. John I",
+          years: "523-526",
+          notes:
+            "Pope during a time of conflict between the Eastern and Western Roman Empires. He was sent as an ambassador to the Eastern Emperor, Theodoric the Great, and was imprisoned, where he died as a martyr.",
+        },
+        {
+          name: "St. Felix IV (III)",
+          years: "526-530",
+          notes:
+            "Pope during a time of political and theological upheaval. He worked to strengthen the papacy's authority and defended against the Arian heresy.",
+        },
+        {
+          name: "St. Boniface II",
+          years: "530-532",
+          notes:
+            "His papacy was marked by internal struggles for power, particularly against a rival claimant to the papacy. He is also noted for his efforts to support the orthodox faith.",
+        },
+        {
+          name: "St. John II",
+          years: "532-535",
+          notes:
+            "The first pope to take a new name upon election. His papacy focused on internal reforms and defending the orthodoxy of the Church against heresies.",
+        },
+        {
+          name: "St. Agapetus I",
+          years: "535-536",
+          notes:
+            "His papacy was short but significant for his role in confronting the heresy of Monophysitism and negotiating with the Byzantine Empire.",
+        },
+        {
+          name: "St. Silverius",
+          years: "536-537",
+          notes:
+            "Pope during the Gothic War; he was exiled to the island of Palmaria by the Byzantine Emperor and later died in exile, likely a martyr.",
+        },
+        {
+          name: "Vigilius",
+          years: "537-555",
+          notes:
+            "Pope during a tumultuous period involving the Byzantine Empire. He was involved in the controversy over the Three Chapters and was exiled at one point.",
+        },
+        {
+          name: "Pelagius I",
+          years: "556-561",
+          notes:
+            "His papacy was marked by efforts to combat the heresies of the time and to maintain peace with the Eastern Church.",
+        },
+        {
+          name: "John III",
+          years: "561-574",
+          notes:
+            "Pope during a time of political instability and plague in Italy. He worked to maintain the Church's influence in the face of external pressures.",
+        },
+        {
+          name: "Benedict I",
+          years: "574-578",
+          notes:
+            "His papacy is remembered for the efforts to provide charity to the poor and the continuing preservation of Christian practices amidst the decline of the Roman Empire.",
+        },
+        {
+          name: "Pelagius II",
+          years: "578-590",
+          notes:
+            "His papacy was characterized by struggles against the Lombards, and he is often remembered for his efforts in defending Rome from outside invasions.",
+        },
+        {
+          name: "St. Gregory I (the Great)",
+          years: "590-604",
+          notes:
+            "One of the most important popes in history, Gregory reformed the Church, promoted missionary work (especially to the Anglo-Saxons), and was a prolific writer. He is also known for the Gregorian chant.",
+        },
+        {
+          name: "Sabinian",
+          years: "604-606",
+          notes:
+            "His papacy was marked by an effort to collect money for famine relief, but he faced opposition due to his financial policies.",
+        },
+        {
+          name: "Boniface III",
+          years: "607",
+          notes:
+            "Known for securing papal primacy by obtaining a decree from the Byzantine Emperor that recognized the pope as the supreme authority over the entire Church.",
+        },
+        {
+          name: "St. Boniface IV",
+          years: "608-615",
+          notes:
+            "Best known for converting the Pantheon in Rome into a Christian church, which became a major center for Christian worship in the city.",
+        },
+        {
+          name: "St. Deusdedit (Adeodatus I)",
+          years: "615-618",
+          notes:
+            "A pope who worked to protect the Church’s property and to guide Christians through times of Lombard invasions.",
+        },
+        {
+          name: "Boniface V",
+          years: "619-625",
+          notes:
+            "He is remembered for furthering Church reforms and for his care for the poor. He also dealt with various issues related to heresy.",
+        },
+        {
+          name: "Honorius I",
+          years: "625-638",
+          notes:
+            "Pope during the early years of Islam's rise. His papacy was marred by controversy regarding his support for Monothelitism, which was condemned posthumously.",
+        },
+        {
+          name: "Severinus",
+          years: "640",
+          notes:
+            "His papacy was brief but notable for his efforts to preserve peace between the Church and the Byzantine Empire, particularly during the reign of Emperor Heraclius.",
+        },
+        {
+          name: "John IV",
+          years: "640-642",
+          notes:
+            "Pope during a period of continued instability caused by the Byzantine Empire’s declining power and the rise of Islam. He was a supporter of orthodoxy.",
+        },
+        {
+          name: "Theodore I",
+          years: "642-649",
+          notes:
+            "A pope from Palestine, his papacy focused on reaffirming the orthodox doctrines of the Church and countering heresies like Monothelitism.",
+        },
+        {
+          name: "St. Martin I",
+          years: "649-653",
+          notes:
+            "Pope who opposed the Monothelite heresy and was exiled to the Crimea by the Byzantine emperor, where he died in captivity.",
+        },
+        {
+          name: "Eugene I",
+          years: "654-657",
+          notes:
+            "A short papacy marked by his efforts to restore peace within the Church and his opposition to the Arianism still present in the Eastern Empire.",
+        },
+        {
+          name: "St. Vitalian",
+          years: "657-672",
+          notes:
+            "His papacy is notable for supporting the papacy’s independence and his efforts to maintain the orthodoxy of the Church in the face of external political pressure.",
+        },
+        {
+          name: "Adeodatus II",
+          years: "672-676",
+          notes:
+            "A pope who continued the work of his predecessors in defending the faith and working for the reform of the clergy.",
+        },
+        {
+          name: "Donus",
+          years: "676-678",
+          notes:
+            "His papacy was short and largely uneventful, but he worked to restore peace within the Church and to address theological issues.",
+        },
+        {
+          name: "St. Agatho",
+          years: "678-681",
+          notes:
+            "Pope during the Sixth Ecumenical Council (the Third Council of Constantinople), which condemned Monothelitism and reaffirmed the doctrine of two wills in Christ.",
+        },
+        {
+          name: "St. Leo II",
+          years: "682-683",
+          notes:
+            "Pope during a time of continued theological disputes, particularly regarding the Monothelite controversy, which he firmly opposed.",
+        },
+        {
+          name: "St. Benedict II",
+          years: "684-685",
+          notes:
+            "His papacy was brief but focused on maintaining unity within the Church and dealing with external threats.",
+        },
+        {
+          name: "St. John V",
+          years: "685-686",
+          notes:
+            "A pope noted for his efforts to resolve the Monothelite controversy and for his piety and concern for the welfare of the poor.",
+        },
+        {
+          name: "Conon",
+          years: "686-687",
+          notes:
+            "Pope during a time of political instability in Italy, but he worked to strengthen the papacy’s influence and authority.",
+        },
+        {
+          name: "St. Sergius I",
+          years: "687-701",
+          notes:
+            "His papacy is marked by efforts to bring peace to the Church and address controversies, particularly regarding the liturgy and the veneration of saints.",
+        },
+        {
+          name: "John VI",
+          years: "701-705",
+          notes:
+            "His papacy focused on stabilizing the Church amid political unrest and restoring relations with the Eastern Church.",
+        },
+        {
+          name: "John VII",
+          years: "705-707",
+          notes:
+            "Pope during a time of internal conflict and external threats, he worked to maintain peace in the Church and to promote orthodoxy.",
+        },
+        {
+          name: "Sisinnius",
+          years: "708",
+          notes:
+            "A very brief papacy marked by efforts to deal with ecclesiastical reforms but no lasting legacy.",
+        },
+        {
+          name: "Constantine",
+          years: "708-715",
+          notes:
+            "A pope who worked to preserve papal authority and dealt with various internal and external threats to the Church’s stability.",
+        },
+        {
+          name: "St. Gregory II",
+          years: "715-731",
+          notes:
+            "Known for his firm opposition to the iconoclast controversy and his efforts to assert the independence of the Church from the Byzantine Empire.",
+        },
+        {
+          name: "St. Gregory III",
+          years: "731-741",
+          notes:
+            "A pope who continued Gregory II’s stance against iconoclasm and worked to strengthen the Church’s position in Italy.",
+        },
+        {
+          name: "St. Zachary",
+          years: "741-752",
+          notes:
+            "Pope during a critical period of political change. He supported the Carolingian dynasty in France and played a key role in the relationship between the Papacy and the Frankish monarchy. He also helped resolve a dispute in the Church and strengthened papal authority.",
+        },
+        {
+          name: "Stephen II (III)",
+          years: "752-757",
+          notes:
+            "Pope who worked to secure the Papal States against external threats, especially from the Lombards. His papacy is also noted for the donation of the Papal States to the pope by the Frankish king Pepin the Short.",
+        },
+        {
+          name: "St. Paul I",
+          years: "757-767",
+          notes:
+            "Pope during a time of Lombard invasions in Italy. He worked to maintain the Church’s autonomy and strengthen papal influence, as well as promoting peace between the Eastern and Western parts of Christendom.",
+        },
+        {
+          name: "St. Stephen III (IV)",
+          years: "768-772",
+          notes:
+            "His papacy is noted for his efforts to strengthen the ties with the Carolingians, particularly Charlemagne. He also continued to oppose the Lombard threat to the Papal States.",
+        },
+        {
+          name: "Adrian I",
+          years: "772-795",
+          notes:
+            "One of the most significant popes of the 8th century, Adrian I worked closely with Charlemagne to solidify the Carolingian empire and the authority of the papacy. He also played a crucial role in the conflict with the Lombards and the defense of Rome.",
+        },
+        {
+          name: "St. Leo III",
+          years: "795-816",
+          notes:
+            "Best known for crowning Charlemagne as Holy Roman Emperor in 800, which was a landmark moment in the history of the Church and European politics. His papacy also faced challenges from within Rome, including a failed assassination attempt.",
+        },
+        {
+          name: "Stephen IV (V)",
+          years: "816-817",
+          notes:
+            "Pope who worked to strengthen relations with the Carolingian Empire and continued his predecessors’ policies of support for Charlemagne’s successors.",
+        },
+        {
+          name: "St. Paschal I",
+          years: "817-824",
+          notes:
+            "His papacy is remembered for his efforts to defend the Church’s independence from secular powers and for promoting the veneration of relics and saints.",
+        },
+        {
+          name: "Eugene II",
+          years: "824-827",
+          notes:
+            "A pope who worked to maintain the Church’s autonomy in the face of increasing secular pressures, including from the Frankish Empire.",
+        },
+        {
+          name: "Valentine",
+          years: "827",
+          notes:
+            "Pope for a very brief period, during which little is known of his activities.",
+        },
+        {
+          name: "Gregory IV",
+          years: "827-844",
+          notes:
+            "His papacy was marked by efforts to combat the spread of heresies and to strengthen ties with the Holy Roman Empire under Louis the Pious. He also worked to establish the Feast of All Saints.",
+        },
+        {
+          name: "Sergius II",
+          years: "844-847",
+          notes:
+            "Pope during a turbulent time for the papacy, with Viking raids on Rome and increasing tensions between the papacy and the Frankish Empire.",
+        },
+        {
+          name: "St. Leo IV",
+          years: "847-855",
+          notes:
+            "Pope during a time of Viking invasions. Leo IV is remembered for his efforts to fortify the city of Rome, particularly through the construction of the Leonine Walls, which helped defend the Vatican area.",
+        },
+        {
+          name: "Benedict III",
+          years: "855-858",
+          notes:
+            "A brief papacy marked by efforts to address the theological disputes and tensions with the Eastern Church.",
+        },
+        {
+          name: "St. Nicholas I (the Great)",
+          years: "858-867",
+          notes:
+            "One of the most important popes of the 9th century, Nicholas I was a strong defender of papal authority. His papacy focused on centralizing power in Rome, addressing clerical abuses, and asserting the papacy's supremacy in both religious and political matters.",
+        },
+        {
+          name: "Adrian II",
+          years: "867-872",
+          notes:
+            "Pope during a time of political and ecclesiastical tensions. He was known for his efforts to address issues with the Eastern Church, particularly in dealing with the issue of the Photian schism.",
+        },
+        {
+          name: "John VIII",
+          years: "872-882",
+          notes:
+            "A pope who faced constant threats from both the Eastern Empire and the rising powers of the Saracens and Vikings. His papacy also saw increasing involvement of secular powers in the papacy, particularly in the form of political intrigue.",
+        },
+        {
+          name: "Marinus I",
+          years: "882-884",
+          notes:
+            "A pope whose papacy was marked by attempts to deal with corruption within the clergy and the continuing conflict between the papacy and the Holy Roman Empire.",
+        },
+        {
+          name: "St. Adrian III",
+          years: "884-885",
+          notes:
+            "A short papacy in which he sought to defend the papacy from both internal and external threats, particularly from the Normans.",
+        },
+        {
+          name: "Stephen V (VI)",
+          years: "885-891",
+          notes:
+            "Pope during a time of increasing political instability in Rome. He worked to strengthen the Church's position in the face of invasions and internal strife.",
+        },
+        {
+          name: "Formosus",
+          years: "891-896",
+          notes:
+            "Pope who was involved in significant political controversies, including the infamous 'Cadaver Synod' where his deceased body was put on trial. Despite the scandal, Formosus is remembered for his efforts to reform the clergy.",
+        },
+        {
+          name: "Boniface VI",
+          years: "896",
+          notes:
+            "Pope for only a brief period, his papacy was marked by political instability and his sudden death.",
+        },
+        {
+          name: "Stephen VI (VII)",
+          years: "896-897",
+          notes:
+            "Pope who infamously conducted the 'Cadaver Synod' to try the corpse of his predecessor, Formosus. This event greatly damaged the papacy’s reputation.",
+        },
+        {
+          name: "Romanus",
+          years: "897",
+          notes:
+            "Pope for only a few months, his papacy was too brief to have a lasting impact.",
+        },
+        {
+          name: "Theodore II",
+          years: "897",
+          notes:
+            "Another short-lived papacy, Theodore II is remembered for reversing the actions of the 'Cadaver Synod' and restoring Formosus's papal acts.",
+        },
+        {
+          name: "John IX",
+          years: "898-900",
+          notes:
+            "Pope who worked to restore stability to the papacy following the chaos of the late 9th century. He also reversed many of the decisions made during the 'Cadaver Synod'.",
+        },
+        {
+          name: "Benedict IV",
+          years: "900-903",
+          notes:
+            "A pope during a time of relative calm after the tumult of previous years. Benedict IV worked to strengthen the Church and deal with the political challenges facing Rome.",
+        },
+        {
+          name: "Leo V",
+          years: "903",
+          notes:
+            "Pope for a very brief period, his papacy was marked by political intrigue and was ended by his deposition.",
+        },
+        {
+          name: "Christopher",
+          years: "903-904",
+          notes:
+            "Pope during a time of political chaos in Rome, his papacy was cut short by a deposition and imprisonment.",
+        },
+        {
+          name: "Sergius III",
+          years: "904-911",
+          notes:
+            "A controversial pope, known for his involvement in the political struggles of the time, including his opposition to previous papacies and his support for the powerful Theophylact family.",
+        },
+        {
+          name: "Anastasius III",
+          years: "911-913",
+          notes:
+            "Pope Anastasius III served as pope for a brief period, during a time of instability in Rome. His papacy was marked by the aftermath of the Saracen invasions and the political tensions of the time.",
+        },
+        {
+          name: "Lando",
+          years: "913-914",
+          notes:
+            "Pope Lando’s papacy was very short and relatively uneventful. Little is known about his actions during his one-year reign.",
+        },
+        {
+          name: "John X",
+          years: "914-928",
+          notes:
+            "Pope John X was an ambitious pope who supported the powerful Roman noble families. His papacy was marked by political intrigue and military activity, including his conflict with the Saracens and his eventual assassination.",
+        },
+        {
+          name: "Leo VI",
+          years: "928",
+          notes:
+            "Pope Leo VI reigned for only a few months and little is known about his papacy. His short time as pope occurred during a turbulent period in Rome.",
+        },
+        {
+          name: "Stephen VIII",
+          years: "929-931",
+          notes:
+            "Pope Stephen VIII’s papacy was relatively uneventful. The period was marked by the struggle for control between the papacy and powerful Roman families.",
+        },
+        {
+          name: "John XI",
+          years: "931-935",
+          notes:
+            "Pope John XI, the son of the powerful Theodora, was involved in the politics of the Roman aristocracy. His papacy was overshadowed by the influence of his mother.",
+        },
+        {
+          name: "Leo VII",
+          years: "936-939",
+          notes:
+            "Pope Leo VII’s papacy was characterized by a focus on moral reforms and attempts to restore stability to the Church, amidst the chaotic politics of the time.",
+        },
+        {
+          name: "Stephen IX",
+          years: "939-942",
+          notes:
+            "Pope Stephen IX was largely a figurehead, with little known about his actions. His papacy occurred during a turbulent period of political instability in Rome.",
+        },
+        {
+          name: "Marinus II",
+          years: "942-946",
+          notes:
+            "Pope Marinus II’s papacy was brief and largely unremarkable. There are few surviving records from his time as pope.",
+        },
+        {
+          name: "Agapetus II",
+          years: "946-955",
+          notes:
+            "Pope Agapetus II was known for his efforts to restore discipline to the clergy and for his support of the papal states against external threats.",
+        },
+        {
+          name: "John XII",
+          years: "955-963",
+          notes:
+            "Pope John XII is infamous for his immoral behavior and the scandalous nature of his papacy. His reign was marked by corruption, political alliances, and a general decline in the authority of the papacy.",
+        },
+        {
+          name: "Leo VIII",
+          years: "963-964",
+          notes:
+            "Pope Leo VIII's papacy was short and largely ineffective. His time in office was dominated by political struggles with rival factions in Rome.",
+        },
+        {
+          name: "Benedict V",
+          years: "964",
+          notes:
+            "Pope Benedict V was elected during a period of conflict, and his papacy lasted only a few months before he was deposed by Emperor Otto I.",
+        },
+        {
+          name: "John XIII",
+          years: "965-972",
+          notes:
+            "Pope John XIII’s papacy was marked by political maneuvering and infighting among Roman nobility. His reign was part of the ongoing struggle for control of the papacy.",
+        },
+        {
+          name: "Benedict VI",
+          years: "973-974",
+          notes:
+            "Pope Benedict VI was known for his short papacy and his tragic death. He was imprisoned and murdered by his political rivals.",
+        },
+        {
+          name: "Benedict VII",
+          years: "974-983",
+          notes:
+            "Pope Benedict VII worked to restore order to the Church after the tumultuous papacies of his predecessors. He was known for his efforts to strengthen the papal authority.",
+        },
+        {
+          name: "John XIV",
+          years: "983-984",
+          notes:
+            "Pope John XIV was a pope with little recorded influence. His papacy lasted less than a year, and he was imprisoned and likely murdered by political rivals.",
+        },
+        {
+          name: "John XV",
+          years: "985-996",
+          notes:
+            "Pope John XV’s papacy was marked by internal Church disputes and corruption. He attempted to deal with the moral and financial challenges facing the Church.",
+        },
+        {
+          name: "Gregory V",
+          years: "996-999",
+          notes:
+            "Pope Gregory V, the first German pope, sought to reform the papacy and the Church, although his papacy was troubled by political challenges and external threats.",
+        },
+        {
+          name: "Sylvester II",
+          years: "999-1003",
+          notes:
+            "Pope Sylvester II was notable for his scholarly background and efforts to reform the Church. He was a proponent of education and scientific knowledge, though his papacy was marred by suspicion and intrigue.",
+        },
+        {
+          name: "John XVII",
+          years: "1003",
+          notes:
+            "Pope John XVII’s papacy was brief, lasting only a few months, with little known about his reign.",
+        },
+        {
+          name: "John XVIII",
+          years: "1003-1009",
+          notes:
+            "Pope John XVIII’s papacy was dominated by political instability in Rome, with few lasting accomplishments attributed to his tenure.",
+        },
+        {
+          name: "Sergius IV",
+          years: "1009-1012",
+          notes:
+            "Pope Sergius IV’s papacy was a time of relative stability, although he faced significant challenges from both within the Church and from external political forces.",
+        },
+        {
+          name: "Benedict VIII",
+          years: "1012-1024",
+          notes:
+            "Pope Benedict VIII was a reforming pope who worked to strengthen the papacy’s independence from secular rulers and reduce the influence of the nobility in Church affairs.",
+        },
+        {
+          name: "John XIX",
+          years: "1024-1032",
+          notes:
+            "Pope John XIX was another pope who struggled with internal Church disputes and the influence of Roman noble families, with his papacy marked by political instability.",
+        },
+        {
+          name: "Benedict IX",
+          years: "1032-1045",
+          notes:
+            "Pope Benedict IX is one of the most controversial popes in history. He was notorious for his youth, immorality, and the political instability he caused. He was pope multiple times, each time under different circumstances.",
+        },
+        {
+          name: "Sylvester III",
+          years: "1045",
+          notes:
+            "Pope Sylvester III’s papacy was short-lived, lasting only about a month, due to his deposition in favor of Benedict IX.",
+        },
+        {
+          name: "Benedict IX",
+          years: "1045",
+          notes:
+            "Benedict IX’s papacy was marked by extreme instability. He was pope multiple times, notorious for his scandalous behavior, and was eventually driven from Rome.",
+        },
+        {
+          name: "Gregory VI",
+          years: "1045-1046",
+          notes:
+            "Pope Gregory VI was a temporary pope whose reign was part of the turbulent political struggles of the papacy in the 11th century.",
+        },
+        {
+          name: "Clement II",
+          years: "1046-1047",
+          notes:
+            "Pope Clement II’s papacy was brief and marked by efforts to reform the Church and its relations with secular rulers. He died unexpectedly after a short reign.",
+        },
+        {
+          name: "Benedict IX",
+          years: "1047-1048",
+          notes:
+            "Benedict IX’s return to the papacy led to more unrest and scandal. His reign was marked by corruption and violence, and he was eventually forced out again.",
+        },
+        {
+          name: "Damasus II",
+          years: "1048",
+          notes:
+            "Pope Damasus II’s papacy lasted only a month. His time in office was interrupted by illness, and his death led to further instability in the papacy.",
+        },
+        {
+          name: "St. Leo IX",
+          years: "1049-1054",
+          notes:
+            "Pope Leo IX is remembered for his reforms and efforts to strengthen the Church. His papacy was marked by his strong opposition to simony and clerical corruption.",
+        },
+        {
+          name: "Victor II",
+          years: "1055-1057",
+          notes:
+            "Pope Victor II focused on the reform of the clergy and the papal relationship with secular rulers, though his papacy was brief.",
+        },
+        {
+          name: "Stephen X",
+          years: "1057-1058",
+          notes:
+            "Pope Stephen X's papacy was very brief, and little is known about his actions during his reign.",
+        },
+        {
+          name: "Nicholas II",
+          years: "1058-1061",
+          notes:
+            "Pope Nicholas II’s papacy was marked by political intrigue, including his role in the election of his successors and efforts to strengthen papal authority.",
+        },
+        {
+          name: "Alexander II",
+          years: "1061-1073",
+          notes:
+            "Pope Alexander II is remembered for his efforts to reform the Church and his support for the Norman conquest of southern Italy, strengthening papal influence in the region.",
+        },
+        {
+          name: "St. Gregory VII",
+          years: "1073-1085",
+          notes:
+            "Pope Gregory VII is known for his vigorous reforms and his conflict with Emperor Henry IV, which led to the investiture controversy. His efforts to centralize papal power were groundbreaking.",
+        },
+        {
+          name: "Blessed Victor III",
+          years: "1086-1087",
+          notes:
+            "Pope Victor III’s papacy was short, and although he focused on Church reform, his time in office was limited due to his health.",
+        },
+        {
+          name: "Blessed Urban II",
+          years: "1088-1099",
+          notes:
+            "Pope Urban II is most famous for initiating the First Crusade in 1095, calling for Christian knights to reclaim the Holy Land from Muslim control.",
+        },
+        {
+          name: "Paschal II",
+          years: "1099-1118",
+          notes:
+            "Pope Paschal II’s papacy was characterized by political struggles with secular rulers, including his conflicts with the Holy Roman Emperor.",
+        },
+        {
+          name: "Gelasius II",
+          years: "1118-1119",
+          notes:
+            "Pope Gelasius II’s papacy was marked by his conflict with Emperor Henry V. He died in exile after a brief and tumultuous papacy.",
+        },
+        {
+          name: "Callistus II",
+          years: "1119-1124",
+          notes:
+            "Pope Callistus II worked to resolve conflicts with secular rulers and was instrumental in ending the Investiture Controversy with the Concordat of Worms.",
+        },
+        {
+          name: "Honorius II",
+          years: "1124-1130",
+          notes:
+            "Pope Honorius II’s papacy focused on continuing the reforms of his predecessors and managing papal relations with powerful European monarchs.",
+        },
+        {
+          name: "Innocent II",
+          years: "1130-1143",
+          notes:
+            "Pope Innocent II's papacy was marked by his struggle with the antipope Anacletus II and his efforts to solidify papal authority in the face of political opposition.",
+        },
+        {
+          name: "Celestine II",
+          years: "1143-1144",
+          notes:
+            "Pope Celestine II’s papacy was extremely short, lasting only about five months. He focused on reforming the Church but had little time to achieve significant changes.",
+        },
+        {
+          name: "Lucius II",
+          years: "1144-1145",
+          notes:
+            "Pope Lucius II’s papacy was short-lived and marked by his efforts to assert papal authority against the Roman nobility, ultimately leading to his death after a siege.",
+        },
+        {
+          name: "Blessed Eugene III",
+          years: "1145-1153",
+          notes:
+            "Pope Eugene III’s papacy was focused on the Second Crusade, which, despite his efforts, ended in failure. He also worked to strengthen the Church in Europe.",
+        },
+        {
+          name: "Anastasius IV",
+          years: "1153-1154",
+          notes:
+            "Pope Anastasius IV’s papacy was brief and marked by his focus on reforming the Church and securing peace in Italy.",
+        },
+        {
+          name: "Adrian IV",
+          years: "1154-1159",
+          notes:
+            "Pope Adrian IV was the only English pope, known for his diplomatic efforts, including negotiating with Emperor Frederick I.",
+        },
+        {
+          name: "Alexander III",
+          years: "1159-1181",
+          notes:
+            "Pope Alexander III is remembered for his defense of papal authority against Emperor Frederick I and his role in consolidating Church power during a tumultuous time.",
+        },
+        {
+          name: "Lucius III",
+          years: "1181-1185",
+          notes:
+            "Pope Lucius III’s papacy was characterized by his efforts to deal with heresy and reform the Church, particularly through the establishment of the Inquisition.",
+        },
+        {
+          name: "Urban III",
+          years: "1185-1187",
+          notes:
+            "Pope Urban III’s papacy was marked by his efforts to rally Christian Europe against the threat of the Muslim conquest of Jerusalem during the Third Crusade.",
+        },
+        {
+          name: "Gregory VIII",
+          years: "1187",
+          notes:
+            "Pope Gregory VIII is best known for his call for the Third Crusade, following the fall of Jerusalem to Saladin.",
+        },
+        {
+          name: "Clement III",
+          years: "1187-1191",
+          notes:
+            "Pope Clement III's papacy was overshadowed by the ongoing Crusades and his efforts to manage relations with the Holy Roman Empire.",
+        },
+        {
+          name: "Celestine III",
+          years: "1191-1198",
+          notes:
+            "Pope Celestine III worked to improve the administrative and organizational strength of the Church and supported the Fourth Crusade.",
+        },
+        {
+          name: "Innocent III",
+          years: "1198-1216",
+          notes:
+            "Pope Innocent III is one of the most powerful and influential popes in history. He exerted papal supremacy over secular rulers and played a key role in the Fourth Crusade.",
+        },
+        {
+          name: "Honorius III",
+          years: "1216-1227",
+          notes:
+            "Pope Honorius III focused on consolidating papal authority and supporting the Fifth Crusade, although his papacy was marred by internal disputes within the Church.",
+        },
+        {
+          name: "Gregory IX",
+          years: "1227-1241",
+          notes:
+            "Pope Gregory IX is best known for his fight against heresy, particularly the Albigensian Crusade, and his establishment of the Inquisition.",
+        },
+        {
+          name: "Celestine IV",
+          years: "1241",
+          notes:
+            "Pope Celestine IV’s papacy lasted only a few months. He was elected in a time of great political instability, but his reign was cut short by his death.",
+        },
+        {
+          name: "Innocent IV",
+          years: "1243-1254",
+          notes:
+            "Pope Innocent IV is known for his conflict with the Holy Roman Emperor Frederick II, which led to the excommunication of the emperor and a major struggle for papal authority.",
+        },
+        {
+          name: "Alexander IV",
+          years: "1254-1261",
+          notes:
+            "Pope Alexander IV's papacy was marked by his efforts to assert papal authority in Italy and Europe, but his reign was overshadowed by political tensions with the Hohenstaufen dynasty.",
+        },
+        {
+          name: "Urban IV",
+          years: "1261-1264",
+          notes:
+            "Pope Urban IV's papacy was notable for his support of the Franciscans and the establishment of the Feast of Corpus Christi.",
+        },
+        {
+          name: "Clement IV",
+          years: "1265-1268",
+          notes:
+            "Pope Clement IV was elected in the midst of political turmoil, and his papacy focused on the struggles between the papacy and the Holy Roman Empire.",
+        },
+        {
+          name: "Gregory X",
+          years: "1271-1276",
+          notes:
+            "Pope Gregory X is remembered for his efforts to reform the Church and for convening the Second Council of Lyons, which aimed to reunite the Eastern and Western churches.",
+        },
+        {
+          name: "Innocent V",
+          years: "1276",
+          notes:
+            "Pope Innocent V's papacy lasted less than five months. He is noted for being the first Dominican pope and for his brief attempts to promote reforms within the Church.",
+        },
+        {
+          name: "Adrian V",
+          years: "1276",
+          notes:
+            "Pope Adrian V's papacy also lasted a short time, just about a month. He was focused on restoring peace to the Church but died before significant reforms could take place.",
+        },
+        {
+          name: "John XXI",
+          years: "1276-1277",
+          notes:
+            "Pope John XXI’s papacy was short, lasting only a few months. He was a scholar known for his works on medicine and philosophy, but he died tragically after being trapped by a collapsing ceiling.",
+        },
+        {
+          name: "Nicholas III",
+          years: "1277-1280",
+          notes:
+            "Pope Nicholas III is known for his efforts to strengthen the papacy, both politically and spiritually. He worked to solidify papal power and reformed the Curia.",
+        },
+        {
+          name: "Martin IV",
+          years: "1281-1285",
+          notes:
+            "Pope Martin IV's papacy was marked by his political alliances with France and the French monarchy, which led to tensions with the Italian states and the Holy Roman Empire.",
+        },
+        {
+          name: "Honorius IV",
+          years: "1285-1287",
+          notes:
+            "Pope Honorius IV's papacy was short and focused on resolving conflicts within Italy and the papacy’s relations with the Kingdom of Sicily.",
+        },
+        {
+          name: "Nicholas IV",
+          years: "1288-1292",
+          notes:
+            "Pope Nicholas IV's papacy was characterized by efforts to promote peace and stability in Italy. He also worked to enhance the papacy's authority in the face of rising secular power.",
+        },
+        {
+          name: "Celestine V",
+          years: "1294",
+          notes:
+            "Pope Celestine V is best known for his voluntary abdication after only five months in office. His decision to resign from the papacy was unprecedented, and he spent his final years in prison.",
+        },
+        {
+          name: "Boniface VIII",
+          years: "1294-1303",
+          notes:
+            "Pope Boniface VIII is one of the most controversial popes in history. His papacy was marked by his assertion of papal supremacy over secular rulers, leading to conflicts with King Philip IV of France and culminating in his humiliation at the hands of the French.",
+        },
+        {
+          name: "Benedict XI",
+          years: "1303-1304",
+          notes:
+            "Pope Benedict XI’s papacy was short, but he attempted to restore peace between the papacy and France following the death of Boniface VIII.",
+        },
+        {
+          name: "Clement V",
+          years: "1305-1314",
+          notes:
+            "Pope Clement V moved the papal court to Avignon, starting the period of the Avignon Papacy. His papacy was also marked by the suppression of the Knights Templar, who were disbanded by papal decree.",
+        },
+        {
+          name: "John XXII",
+          years: "1316-1334",
+          notes:
+            "Pope John XXII is remembered for his financial policies, his conflict with Emperor Louis IV, and his emphasis on the primacy of papal authority over secular rulers.",
+        },
+        {
+          name: "Benedict XII",
+          years: "1334-1342",
+          notes:
+            "Pope Benedict XII's papacy focused on theological reforms, particularly his emphasis on the beatific vision and the souls of the dead, and his efforts to consolidate the Avignon Papacy.",
+        },
+        {
+          name: "Clement VI",
+          years: "1342-1352",
+          notes:
+            "Pope Clement VI is best known for his papacy during the Black Death, which ravaged Europe. He was also a patron of the arts and played a key role in strengthening the financial foundation of the papacy.",
+        },
+        {
+          name: "Innocent VI",
+          years: "1352-1362",
+          notes:
+            "Pope Innocent VI worked to restore peace between the papacy and the Italian states. He is also remembered for his efforts to reform the administration of the Church.",
+        },
+        {
+          name: "Urban V",
+          years: "1362-1370",
+          notes:
+            "Pope Urban V attempted to return the papacy to Rome after the period of the Avignon Papacy, but his reign was marred by political and financial difficulties.",
+        },
+        {
+          name: "Gregory XI",
+          years: "1370-1378",
+          notes:
+            "Pope Gregory XI is remembered for returning the papal court to Rome in 1377 after nearly 70 years in Avignon, ending the Avignon Papacy. His death sparked the Western Schism.",
+        },
+        {
+          name: "Urban VI",
+          years: "1378-1389",
+          notes:
+            "Pope Urban VI’s election marked the beginning of the Western Schism. His papacy was marked by conflict with cardinals, which led to the election of an antipope, Clement VII, in Avignon.",
+        },
+        {
+          name: "Boniface IX",
+          years: "1389-1404",
+          notes:
+            "Pope Boniface IX attempted to stabilize the papacy during the Western Schism, but his efforts were undermined by ongoing disputes with the rival papacy in Avignon.",
+        },
+        {
+          name: "Innocent VII",
+          years: "1404-1406",
+          notes:
+            "Pope Innocent VII’s papacy was part of the turmoil of the Western Schism. He struggled to maintain papal authority amid the political divisions of the time.",
+        },
+        {
+          name: "Gregory XII",
+          years: "1406-1415",
+          notes:
+            "Pope Gregory XII was the last pope of the Roman line during the Western Schism. He was eventually persuaded to abdicate in 1415 as part of the resolution of the schism at the Council of Constance.",
+        },
+        {
+          name: "Martin V",
+          years: "1417-1431",
+          notes:
+            "Pope Martin V was elected at the end of the Western Schism and worked to reunite the Church. He is also known for his efforts to strengthen papal control over the Papal States.",
+        },
+        {
+          name: "Eugene IV",
+          years: "1431-1447",
+          notes:
+            "Pope Eugene IV is remembered for his involvement in the Council of Basel and his efforts to maintain papal authority, especially in light of the growing power of secular rulers.",
+        },
+        {
+          name: "Nicholas V",
+          years: "1447-1455",
+          notes:
+            "Pope Nicholas V was a great patron of the arts and learning, contributing to the Renaissance. He also worked on strengthening the papacy and its influence across Europe.",
+        },
+        {
+          name: "Calistus III",
+          years: "1455-1458",
+          notes:
+            "Pope Callistus III is best known for his efforts to organize resistance to the Ottoman Empire, particularly after the fall of Constantinople in 1453.",
+        },
+        {
+          name: "Pius II",
+          years: "1458-1464",
+          notes:
+            "Pope Pius II, a former humanist scholar and writer, focused on Church reform and the continued fight against the Ottomans.",
+        },
+        {
+          name: "Paul II",
+          years: "1464-1471",
+          notes:
+            "Pope Paul II’s papacy was marked by his focus on internal Church reform, although his reign was also characterized by lavish spending and political maneuvering.",
+        },
+        {
+          name: "Sixtus IV",
+          years: "1471-1484",
+          notes:
+            "Pope Sixtus IV is remembered for his patronage of the arts, his role in the establishment of the Sistine Chapel, and his political alliances, including the expansion of papal power.",
+        },
+        {
+          name: "Innocent VIII",
+          years: "1484-1492",
+          notes:
+            "Pope Innocent VIII’s papacy was marred by corruption and political intrigue. He is also known for his efforts to suppress witchcraft and heresy.",
+        },
+        {
+          name: "Alexander VI",
+          years: "1492-1503",
+          notes:
+            "Pope Alexander VI, a member of the Borgia family, is one of the most controversial popes in history. His papacy was marked by nepotism, corruption, and political machinations.",
+        },
+        {
+          name: "Pius III",
+          years: "1503",
+          notes:
+            "Pope Pius III had a very brief papacy of only 26 days, during which he focused on peace efforts in Italy, but he died before accomplishing much.",
+        },
+        {
+          name: "Julius II",
+          years: "1503-1513",
+          notes:
+            "Pope Julius II was a warrior pope, known for his aggressive military campaigns to expand the Papal States and for commissioning the rebuilding of St. Peter's Basilica.",
+        },
+        {
+          name: "Leo X",
+          years: "1513-1521",
+          notes:
+            "Pope Leo X is known for his extravagant lifestyle, patronage of the arts (including Michelangelo and Raphael), and his involvement in the events leading up to the Protestant Reformation, notably excommunicating Martin Luther in 1521.",
+        },
+        {
+          name: "Adrian VI",
+          years: "1522-1523",
+          notes:
+            "Pope Adrian VI was a Dutch pope known for his efforts at reforming the Church. His brief papacy was marked by his attempts to address corruption, though he struggled against powerful political forces and his unpopularity in Rome.",
+        },
+        {
+          name: "Clement VII",
+          years: "1523-1534",
+          notes:
+            "Pope Clement VII's papacy was marked by political struggles, including the sack of Rome by the armies of Charles V in 1527. He faced the challenge of balancing the Church’s power with the growing influence of secular rulers.",
+        },
+        {
+          name: "Paul III",
+          years: "1534-1549",
+          notes:
+            "Pope Paul III was a major figure in the Catholic Counter-Reformation. He initiated the Council of Trent and made significant reforms to the Church, while also navigating the political landscape of Europe.",
+        },
+        {
+          name: "Julius III",
+          years: "1550-1555",
+          notes:
+            "Pope Julius III’s papacy was marked by a more relaxed approach to reform after the Council of Trent. His reign was characterized by luxurious living and the patronage of the arts, but also by political instability.",
+        },
+        {
+          name: "Marcellus II",
+          years: "1555",
+          notes:
+            "Pope Marcellus II's papacy lasted only 22 days. Despite his short time as pope, he was known for his moral and religious reforms, emphasizing the need for reform in the Church.",
+        },
+        {
+          name: "Paul IV",
+          years: "1555-1559",
+          notes:
+            "Pope Paul IV was a staunch defender of papal authority and the Catholic faith, but his papacy was marked by strict censorship, the establishment of the Roman Inquisition, and hostility toward Jews and Protestants.",
+        },
+        {
+          name: "Pius IV",
+          years: "1559-1565",
+          notes:
+            "Pope Pius IV is known for completing the work of the Council of Trent, which brought about key reforms in Catholic doctrine and practice. He also worked to stabilize the Church in the aftermath of the Reformation.",
+        },
+        {
+          name: "Pius V",
+          years: "1566-1572",
+          notes:
+            "Pope Pius V is remembered for his role in implementing the reforms of the Council of Trent, and his excommunication of Elizabeth I of England. He also led the Catholic forces in the Battle of Lepanto (1571) against the Ottoman Empire.",
+        },
+        {
+          name: "Gregory XIII",
+          years: "1572-1585",
+          notes:
+            "Pope Gregory XIII is most famous for establishing the Gregorian calendar, which is the calendar still used today. His papacy also focused on strengthening the Catholic Church's presence in Europe and combating Protestantism.",
+        },
+        {
+          name: "Sixtus V",
+          years: "1585-1590",
+          notes:
+            "Pope Sixtus V was a vigorous reformer who worked to streamline the administration of the Church and improve its finances. He also oversaw the construction of significant architectural projects in Rome, including the completion of St. Peter's Basilica.",
+        },
+        {
+          name: "Urban VII",
+          years: "1590",
+          notes:
+            "Pope Urban VII's papacy lasted only 13 days, making it the shortest papacy in history. He was elected in a time of political instability but died before he could implement any significant reforms.",
+        },
+        {
+          name: "Gregory XIV",
+          years: "1590-1591",
+          notes:
+            "Pope Gregory XIV’s papacy was marked by a focus on internal Church matters, particularly reforming the Roman Curia and dealing with the ongoing challenges of the Protestant Reformation.",
+        },
+        {
+          name: "Innocent IX",
+          years: "1591",
+          notes:
+            "Pope Innocent IX’s papacy lasted only two months. He focused on maintaining Catholic unity, but his reign was too short to make any lasting impact.",
+        },
+        {
+          name: "Clement VIII",
+          years: "1592-1605",
+          notes:
+            "Pope Clement VIII played a crucial role in maintaining Catholic orthodoxy during the Counter-Reformation. He helped bring the Italian states into the Catholic fold, promoted the arts, and supported the mission to evangelize the Americas.",
+        },
+        {
+          name: "Leo XI",
+          years: "1605",
+          notes:
+            "Pope Leo XI’s papacy lasted only 27 days. He is remembered for his brief attempt at reforming the papacy and for his efforts to bring peace to Italy, but he died suddenly before his plans could be realized.",
+        },
+        {
+          name: "Paul V",
+          years: "1605-1621",
+          notes:
+            "Pope Paul V is known for his support of the Baroque artistic movement and for his efforts to strengthen papal authority, particularly in relation to the powerful monarchs of Europe.",
+        },
+        {
+          name: "Gregory XV",
+          years: "1621-1623",
+          notes:
+            "Pope Gregory XV’s papacy focused on the Catholic revival and reform, including the creation of the Congregation for the Propagation of the Faith, which played a key role in missionary work around the world.",
+        },
+        {
+          name: "Urban VIII",
+          years: "1623-1644",
+          notes:
+            "Pope Urban VIII’s papacy is remembered for its political maneuvering and his patronage of the arts. He faced challenges in managing relations with France and Spain, and his papacy was marred by the infamous trial of Galileo.",
+        },
+        {
+          name: "Innocent X",
+          years: "1644-1655",
+          notes:
+            "Pope Innocent X is best known for his strong defense of papal independence against the growing power of secular rulers. He was involved in the political struggles of Europe, particularly in the Thirty Years' War.",
+        },
+        {
+          name: "Alexander VII",
+          years: "1655-1667",
+          notes:
+            "Pope Alexander VII focused on strengthening papal authority and reforming Church practices, and he was also a patron of Baroque art. He played a role in the political balance of power in Europe.",
+        },
+        {
+          name: "Clement IX",
+          years: "1667-1669",
+          notes:
+            "Pope Clement IX's papacy was marked by a focus on internal Church reform, including improving relations between the Church and the emerging Enlightenment movement.",
+        },
+        {
+          name: "Clement X",
+          years: "1670-1676",
+          notes:
+            "Pope Clement X’s papacy was notable for his calm leadership and his emphasis on peace within the Catholic Church, especially after the turbulent period of papal politics in the mid-17th century.",
+        },
+        {
+          name: "Innocent XI",
+          years: "1676-1689",
+          notes:
+            "Pope Innocent XI is known for his efforts to preserve the authority of the Church in the face of rising secularism. He played a key role in the defense of the Papal States and the Catholic faith during the wars in Europe.",
+        },
+        {
+          name: "Alexander VIII",
+          years: "1689-1691",
+          notes:
+            "Pope Alexander VIII’s papacy was short, and his reign was primarily focused on securing papal control and calming political tensions between the Holy See and European powers.",
+        },
+        {
+          name: "Innocent XII",
+          years: "1691-1700",
+          notes:
+            "Pope Innocent XII worked to reform the Roman Curia, focusing on reducing corruption and excess. He was known for his moral integrity and efforts to restore order within the Church.",
+        },
+        {
+          name: "Clement XI",
+          years: "1700-1721",
+          notes:
+            "Pope Clement XI’s papacy was marked by his efforts to combat the rise of secularism in Europe, as well as his strong influence on the arts and culture, particularly the promotion of Baroque art and architecture.",
+        },
+        {
+          name: "Innocent XIII",
+          years: "1721-1724",
+          notes:
+            "Pope Innocent XIII’s papacy was brief, but he continued the work of his predecessors in strengthening the finances of the Church and reinforcing its position in Europe.",
+        },
+        {
+          name: "Benedict XIII",
+          years: "1724-1730",
+          notes:
+            "Pope Benedict XIII is remembered for his piety and efforts to reduce corruption within the Church. His papacy also marked an era of relative peace in the Papal States.",
+        },
+        {
+          name: "Clement XII",
+          years: "1730-1740",
+          notes:
+            "Pope Clement XII’s papacy was marked by his attempts to strengthen the papacy’s authority in Italy. He also sought to improve relations with the Kingdom of Naples and strengthen Catholicism in Europe.",
+        },
+        {
+          name: "Benedict XIV",
+          years: "1740-1758",
+          notes:
+            "Pope Benedict XIV is remembered for his intellectual pursuits, particularly in the areas of theology and canon law. He worked to reform the Church’s administration and was a patron of the arts and sciences.",
+        },
+        {
+          name: "Clement XIII",
+          years: "1758-1769",
+          notes:
+            "Pope Clement XIII's papacy was marked by his staunch defense of the Church against the rise of secularism and Enlightenment thought. He strongly opposed the suppression of the Jesuits and the efforts of European monarchs to limit the Church's power.",
+        },
+        {
+          name: "Clement XIV",
+          years: "1769-1774",
+          notes:
+            "Pope Clement XIV is most remembered for his controversial decision to suppress the Jesuit order in 1773, under pressure from European monarchs. His papacy was marked by tension between the Church and European secular rulers.",
+        },
+        {
+          name: "Pius VI",
+          years: "1775-1799",
+          notes:
+            "Pope Pius VI's papacy coincided with the French Revolution, which led to his eventual captivity by French forces. His papacy was characterized by struggles to maintain papal authority in the face of revolutionary and Napoleonic forces in Europe.",
+        },
+        {
+          name: "Pius VII",
+          years: "1800-1823",
+          notes:
+            "Pope Pius VII is known for his lengthy papacy, which saw significant struggles with Napoleon Bonaparte, including Pius's imprisonment and eventual restoration. He played a key role in re-establishing the papacy's independence after the Napoleonic Wars.",
+        },
+        {
+          name: "Leo XII",
+          years: "1823-1829",
+          notes:
+            "Pope Leo XII's papacy was characterized by his conservative stance and efforts to preserve papal authority against liberal movements in Europe. He is also known for his support of the Catholic Church’s presence in the Americas.",
+        },
+        {
+          name: "Pius VIII",
+          years: "1829-1830",
+          notes:
+            "Pope Pius VIII’s papacy was short, lasting only two years. He focused on internal Church reform and was known for his conservative approach to politics and social issues.",
+        },
+        {
+          name: "Gregory XVI",
+          years: "1831-1846",
+          notes:
+            "Pope Gregory XVI was known for his conservative stance against liberalism, secularism, and modernism, which he saw as threats to both the Church and the Papal States. His reign was marked by the suppression of new ideologies and movements.",
+        },
+        {
+          name: "Pius IX",
+          years: "1846-1878",
+          notes:
+            "Pope Pius IX had the longest papacy in history, overseeing major events like the First Vatican Council, the declaration of the dogma of the Immaculate Conception, and the loss of the Papal States. His papacy is also noted for its response to liberalism and nationalism.",
+        },
+        {
+          name: "Leo XIII",
+          years: "1878-1903",
+          notes:
+            "Pope Leo XIII’s papacy focused on addressing the social issues brought about by industrialization. He issued the encyclical *Rerum Novarum*, which laid the foundation for Catholic social teaching, emphasizing the rights of workers.",
+        },
+        {
+          name: "Pius X",
+          years: "1903-1914",
+          notes:
+            "Pope Pius X is remembered for his reforms in the liturgy and his vigorous efforts to combat modernism, which he considered a threat to Church doctrine. He also promoted frequent Communion and the education of children in Catholic schools.",
+        },
+        {
+          name: "Benedict XV",
+          years: "1914-1922",
+          notes:
+            "Pope Benedict XV’s papacy was dominated by World War I, during which he worked to mediate peace and alleviate suffering. His efforts to remain neutral were often criticized, but his diplomacy helped strengthen the Vatican's international standing.",
+        },
+        {
+          name: "Pius XI",
+          years: "1922-1939",
+          notes:
+            "Pope Pius XI’s papacy was marked by his efforts to navigate the rise of fascism and communism in Europe. He signed the Lateran Treaty in 1929, which recognized the Vatican as an independent sovereign state, and condemned totalitarian regimes.",
+        },
+        {
+          name: "Pius XII",
+          years: "1939-1958",
+          notes:
+            "Pope Pius XII led the Church through the turbulent years of World War II, and his papacy was marked by controversy over his response to the Holocaust. He focused on preserving the Church’s independence and defending Catholic interests in a changing world.",
+        },
+        {
+          name: "John XXIII",
+          years: "1958-1963",
+          notes:
+            "Pope John XXIII is most famous for convening the Second Vatican Council (1962-1965), which aimed to modernize Church practices and improve relations with other Christian denominations and religions. His papacy was marked by openness and reform.",
+        },
+        {
+          name: "Paul VI",
+          years: "1963-1978",
+          notes:
+            "Pope Paul VI’s papacy saw the completion of the Second Vatican Council and its subsequent reforms. He also navigated the challenges of a rapidly changing world, addressing issues like birth control (Humanae Vitae) and ecumenism.",
+        },
+        {
+          name: "John Paul I",
+          years: "1978",
+          notes:
+            "Pope John Paul I’s papacy was extremely brief, lasting only 33 days before his sudden death. Known for his warmth and humility, his papacy was marked by hopes for greater transparency and reforms within the Vatican.",
+        },
+        {
+          name: "John Paul II",
+          years: "1978-2005",
+          notes:
+            "Pope John Paul II was one of the most influential popes in modern history, known for his role in the fall of communism in Eastern Europe, his extensive travels, and his emphasis on human dignity and social justice. He was also a strong advocate for interfaith dialogue and Catholic teachings on life and morality.",
+        },
+        {
+          name: "Benedict XVI",
+          years: "2005-2013",
+          notes:
+            "Pope Benedict XVI's papacy focused on re-affirming traditional Catholic teachings, particularly in response to secularism and relativism. His resignation in 2013 was the first by a pope in nearly 600 years, due to health concerns.",
+        },
+        {
+          name: "Francis",
+          years: "2013—",
+          notes:
+            "Pope Francis, the first Jesuit pope, has focused on issues such as poverty, climate change, interfaith dialogue, and Church reform. His papacy is marked by an emphasis on mercy, humility, and inclusiveness, and he has sought to bring the Church closer to the world’s marginalized.",
+        },
       ];
 
       // Function to render popes
@@ -385,6 +1724,13 @@
           const name = document.createElement("h2");
           name.textContent = pope.name;
           contentDiv.appendChild(name);
+
+          // Show notes if tenure is more than 5 years
+          if (tenure > 5) {
+            const notes = document.createElement("p");
+            notes.textContent = pope.notes;
+            contentDiv.appendChild(notes);
+          }
 
           // Adjust the height of the content based on the pope's tenure
           const relativeHeight = (tenure / maxTenure) * 1000;
